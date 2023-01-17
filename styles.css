@@ -1,13 +1,14 @@
 body {
     background-color: black;
     color: white;
+    margin:20px;
 }
 
 a {
     color: lightblue;
 }
 
-.myworkdiv {
+.projectsdiv {
     margin: auto;
     display: flex;
     justify-content: space-around;
@@ -19,7 +20,7 @@ a {
     font-size: 15px;
 }
 
-.myworkspan {
+.projectsspan {
     width: 350px;
     word-wrap: break-word;
     text-align: center;
