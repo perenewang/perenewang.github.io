@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+a {
+    color: lightblue;
+}
+
+.myworkdiv {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+#contactdiv {
+    display: flex;
+    justify-content: space-around;
+    width: 25%;
+}
+
+.myworkspan {
+    width: 350px;
+    word-wrap: break-word;
+    text-align: center;
+}
