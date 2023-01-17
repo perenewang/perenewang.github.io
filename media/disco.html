@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>DISCO!</title>
+    <style>
+      body {
+        background: black;
+      }
+      
+      .box {
+        padding: 25px;
+        opacity: 65%;
+        display: inline;
+      }
+
+      .row {
+        display: inline;
+        padding: 10px;
+      }
+
+      .screen {
+        display: block;
+        padding: 25px;
+      }
+
+      label {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        transition: all .5s;
+        cursor: pointer;
+      }
+
+      input:checked+label {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        margin-top: 0;
+        left: 0;
+        margin-left: 0;
+        border-radius: 0;
+        transform: skew(0deg);
+        animation-name: rainbow2;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+      }
+
+      input {
+        visibility: hidden;
+      }
+      
+      .normal-circle {
+        animation-name: rainbow;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        border-radius: 50%;
+      }
+
+      .opposite-circle {
+        animation-name: opposite-rainbow;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        transform: skew(20deg);
+      }
+      
+      .another-circle {
+        animation-name: another-rainbow;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+      
+      /*@keyframes rainbow {
+        0% {
+          background-color: #08F7FE;
+        }
+
+        25% {
+          background-color: #09FBD3;
+        }
+
+        50% {
+          background-color: #FE53BB;
+        }
+
+        100% {
+          background-color: #F5D300;
+        }
+      }
+
+      @keyframes opposite-rainbow {
+        0% {
+          background-color: #7122FA;
+        }
+
+        25% {
+          background-color: #F148FB;
+        }
+
+        50% {
+          background-color: #FFACFC;
+        }
+
+        100% {
+          background-color: #560A86;
+        }
+      }
+      
+      @keyframes another-rainbow {
+        0% {
+          background-color: #75D5FD;
+        }
+
+        25% {
+          background-color: #B76CFD;
+        }
+
+        50% {
+          background-color: #011FFD;
+        }
+
+        100% {
+          background-color: #FF2281;
+        }
+      }*/
+
+      @keyframes rainbow {
+        0% {
+          background-color: purple;
+        }
+
+        25% {
+          background-color: #FF2281;
+        }
+
+        50% {
+          background-color: blue;
+        }
+
+        100% {
+          background-color: blueviolet;
+        }
+      }
+
+      @keyframes opposite-rainbow {
+        0% {
+          background-color: magenta;
+        }
+
+        25% {
+          background-color: blue;
+        }
+
+        50% {
+          background-color: purple;
+        }
+
+        100% {
+          background-color: cyan;
+        }
+      }
+      
+      @keyframes another-rainbow {
+        0% {
+          background-color: darkturquoise;
+        }
+
+        25% {
+          background-color: #09FBD3;
+        }
+
+        50% {
+          background-color: deepskyblue;
+        }
+
+        100% {
+          background-color: deeppink;
+        }
+      }
+
+      @keyframes rainbow2 {
+        0% {
+          background-color: red;
+        }
+
+        25% {
+          background-color: fuchsia;
+        }
+
+        50% {
+          background-color: aqua;
+        }
+
+        100% {
+          background-color: yellow;
+        }
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <script>
+      //declarative approach
+
+      function createCircle(i, j, type) {
+        const circle = document.createElement('div')
+        circle.className = 'box'
+        circle.innerHTML = `
+            <input id="circle${i}${j}" type="checkbox">
+            <label class="${type}-circle" for="circle${i}${j}"></label>
+        `
+        return circle
+      }
+
+      function createPage(j) {
+        const row = document.createElement('div')
+        row.className = 'screen'
+        for (let i = 0; i < (window.innerWidth / 85); i++) {
+          let type
+          if ((i % 2 === 0) && (j % 2 === 0))
+            type = "normal"
+          else if ((i % 2 !== 0) && (j % 2 !== 0))
+            type = "opposite"
+          else
+            type = "another"
+          const a = createCircle(i,j,type)
+          row.appendChild(a)
+        }
+        document.body.appendChild(row)
+      }
+
+      for (let i = 0; i < (window.innerHeight / 50); i++) {
+        createPage(i)
+      }
+    </script>
+  </body>
+
+</html>
